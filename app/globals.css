@@ -77,8 +77,9 @@ a:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 3px solid var(--gold);
+  outline: 3px solid var(--green-dark);
   outline-offset: 3px;
+  box-shadow: 0 0 0 6px var(--gold);
 }
 
 ::selection {
@@ -1187,7 +1188,7 @@ p {
 
 .form-field input::placeholder,
 .form-field textarea::placeholder {
-  color: #89968c;
+  color: #65756a;
 }
 
 .form-field textarea {
@@ -1324,7 +1325,7 @@ p {
 
 .site-footer__disclaimer {
   width: 100%;
-  color: #79857b;
+  color: #536157;
 }
 
 @media (max-width: 1080px) {
