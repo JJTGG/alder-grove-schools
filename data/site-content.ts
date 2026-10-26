@@ -4,6 +4,8 @@ export type LearningStage = {
   shortTitle: string;
   summary: string;
   introduction: string;
+  imageUrl: string;
+  imageAlt: string;
   focusAreas: string[];
   learningApproach: string[];
   closingNote: string;
@@ -18,6 +20,9 @@ export const learningStages: LearningStage[] = [
       "A welcoming start built around curiosity, communication, play and discovery.",
     introduction:
       "The early years set the tone for how children experience learning. This concept programme places guided play, careful observation, language and positive relationships at the centre of each day.",
+    imageUrl:
+      "https://res.cloudinary.com/kcxmd95c/image/upload/f_auto,q_auto,w_900,ar_16:10,c_fill,g_auto/v1793012156/alder-grove-schools/early-learning-paired-reading.jpg",
+    imageAlt: "Young learners studying together in a classroom.",
     focusAreas: [
       "Language and early communication",
       "Play, movement and coordination",
@@ -42,6 +47,9 @@ export const learningStages: LearningStage[] = [
       "Strong foundations in literacy, numeracy, problem-solving and independent thought.",
     introduction:
       "Primary learning builds on curiosity and turns it into confidence. This sample programme combines core academic foundations with discussion, practical projects and opportunities to work with others.",
+    imageUrl:
+      "https://res.cloudinary.com/kcxmd95c/image/upload/f_auto,q_auto,w_900,ar_16:10,c_fill,g_auto/v1793012165/alder-grove-schools/library-group-reading.jpg",
+    imageAlt: "Students reading and learning together in a library.",
     focusAreas: [
       "Reading, writing and communication",
       "Numeracy and mathematical reasoning",
@@ -66,6 +74,9 @@ export const learningStages: LearningStage[] = [
       "Deeper subject knowledge, thoughtful challenge and preparation for future choices.",
     introduction:
       "Secondary learning asks students to analyse, evaluate and take increasing responsibility for their work. This concept programme combines academic depth with communication, collaboration and reflection.",
+    imageUrl:
+      "https://res.cloudinary.com/kcxmd95c/image/upload/f_auto,q_auto,w_900,ar_16:10,c_fill,g_auto/v1793012346/alder-grove-schools/science-hands-on-experiment.jpg",
+    imageAlt: "Students carrying out a supervised classroom science experiment.",
     focusAreas: [
       "Subject knowledge and analytical reasoning",
       "Research and evidence-based discussion",
@@ -164,24 +175,36 @@ export const schoolLifeTopics = [
     number: "01",
     title: "Creative expression",
     description:
-      "Art, making, performance and imaginative projects give learners different ways to communicate ideas."
+      "Art, making, performance and imaginative projects give learners different ways to communicate ideas.",
+    imageUrl:
+      "https://res.cloudinary.com/kcxmd95c/image/upload/f_auto,q_auto,w_900,ar_16:10,c_fill,g_auto/v1793012349/alder-grove-schools/creative-arts-class.jpg",
+    imageAlt: "Children painting as part of a creative arts activity."
   },
   {
     number: "02",
     title: "Movement and wellbeing",
     description:
-      "Age-appropriate movement, healthy routines and shared activities can support focus and confidence."
+      "Age-appropriate movement, healthy routines and shared activities can support focus and confidence.",
+    imageUrl:
+      "https://res.cloudinary.com/kcxmd95c/image/upload/f_auto,q_auto,w_900,ar_16:10,c_fill,g_auto/v1793012354/alder-grove-schools/outdoor-soccer-lagos.jpg",
+    imageAlt: "Children playing football outdoors on a school sport field."
   },
   {
     number: "03",
     title: "Community and teamwork",
     description:
-      "Collaborative tasks help learners practise listening, contributing and solving problems together."
+      "Collaborative tasks help learners practise listening, contributing and solving problems together.",
+    imageUrl:
+      "https://res.cloudinary.com/kcxmd95c/image/upload/f_auto,q_auto,w_900,ar_16:10,c_fill,g_auto/v1793012451/alder-grove-schools/classroom-collaborative-learning.jpg",
+    imageAlt: "Students learning together in a classroom."
   },
   {
     number: "04",
     title: "Reflection and responsibility",
     description:
-      "Everyday routines can help learners build organisation, self-awareness and responsibility."
+      "Everyday routines can help learners build organisation, self-awareness and responsibility.",
+    imageUrl:
+      "https://res.cloudinary.com/kcxmd95c/image/upload/f_auto,q_auto,w_900,ar_16:10,c_fill,g_auto/v1793012165/alder-grove-schools/library-group-reading.jpg",
+    imageAlt: "Students reading and working quietly together in a library."
   }
 ];
