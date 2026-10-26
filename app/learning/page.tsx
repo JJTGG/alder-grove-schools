@@ -41,7 +41,6 @@ export default function LearningPage() {
                     fill
                     sizes="(max-width: 600px) 100vw, (max-width: 860px) 50vw, 33vw"
                     src={stage.imageUrl}
-                    unoptimized
                   />
                 </div>
                 <span className="learning-card__number">
