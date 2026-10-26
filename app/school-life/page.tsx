@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/page-hero";
 import { schoolLifeTopics } from "@/data/site-content";
@@ -33,11 +34,25 @@ export default function SchoolLifePage() {
 
           <div className="life-grid">
             {schoolLifeTopics.map((topic) => (
-              <article className="life-card" key={topic.number}>
-                <span className="life-card__number">{topic.number}</span>
-                <div>
-                  <h3>{topic.title}</h3>
-                  <p>{topic.description}</p>
+              <article
+                className="life-card life-card--media"
+                key={topic.number}
+              >
+                <div className="life-card__media">
+                  <Image
+                    alt={topic.imageAlt}
+                    fill
+                    sizes="(max-width: 600px) 100vw, (max-width: 860px) 50vw, 45vw"
+                    src={topic.imageUrl}
+                    unoptimized
+                  />
+                </div>
+                <div className="life-card__body">
+                  <span className="life-card__number">{topic.number}</span>
+                  <div>
+                    <h3>{topic.title}</h3>
+                    <p>{topic.description}</p>
+                  </div>
                 </div>
               </article>
             ))}
