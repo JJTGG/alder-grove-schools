@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/page-hero";
 import { learningStages } from "@/data/site-content";
@@ -34,6 +35,15 @@ export default function LearningPage() {
           <div className="card-grid">
             {learningStages.map((stage, index) => (
               <article className="learning-card" key={stage.slug}>
+                <div className="learning-card__media">
+                  <Image
+                    alt={stage.imageAlt}
+                    fill
+                    sizes="(max-width: 600px) 100vw, (max-width: 860px) 50vw, 33vw"
+                    src={stage.imageUrl}
+                    unoptimized
+                  />
+                </div>
                 <span className="learning-card__number">
                   {String(index + 1).padStart(2, "0")}
                 </span>
