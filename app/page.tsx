@@ -1,5 +1,13 @@
+import Image from "next/image";
 import Link from "next/link";
-import { learningStages, schoolArticles, schoolPrinciples } from "@/data/site-content";
+import {
+  learningStages,
+  schoolArticles,
+  schoolPrinciples
+} from "@/data/site-content";
+
+const campusImage =
+  "https://res.cloudinary.com/kcxmd95c/image/upload/f_auto,q_auto,w_1200,ar_4:5,c_fill,g_auto/v1793012341/alder-grove-schools/campus-exterior-greenery.jpg";
 
 export default function HomePage() {
   return (
@@ -29,36 +37,25 @@ export default function HomePage() {
           </div>
 
           <div className="home-hero__visual">
-            <div
-              aria-label="Decorative illustration of a school building, trees and open grounds"
-              className="campus-art"
-              role="img"
-            >
-              <div className="campus-art__sun" />
-              <div className="campus-art__cloud" />
-              <div className="campus-art__hill campus-art__hill--back" />
-              <div className="campus-art__hill" />
-
-              <div className="campus-art__building">
-                <div className="campus-art__roof" />
-                <span className="campus-art__window" />
-                <span className="campus-art__window" />
-                <span className="campus-art__window" />
-                <span className="campus-art__window" />
-                <span className="campus-art__window" />
-                <span className="campus-art__window" />
-                <div className="campus-art__door" />
-              </div>
-
-              <div className="campus-art__tree" />
-              <div className="campus-art__tree campus-art__tree--right" />
-
-              <div className="campus-art__label">
+            <div className="home-hero__photo">
+              <Image
+                alt="Illustrative photograph of a school building surrounded by landscaped greenery."
+                className="home-hero__photo-image"
+                fill
+                priority
+                sizes="(max-width: 860px) 100vw, 50vw"
+                src={campusImage}
+                unoptimized
+              />
+              <div className="home-hero__photo-label">
                 <div>
                   <span>Our guiding idea</span>
                   <strong>Room to grow.</strong>
                 </div>
-                <div aria-hidden="true" className="campus-art__label-mark">
+                <div
+                  aria-hidden="true"
+                  className="home-hero__photo-label-mark"
+                >
                   ↗
                 </div>
               </div>
@@ -89,6 +86,15 @@ export default function HomePage() {
           <div className="card-grid">
             {learningStages.map((stage, index) => (
               <article className="learning-card" key={stage.slug}>
+                <div className="learning-card__media">
+                  <Image
+                    alt={stage.imageAlt}
+                    fill
+                    sizes="(max-width: 600px) 100vw, (max-width: 860px) 50vw, 33vw"
+                    src={stage.imageUrl}
+                    unoptimized
+                  />
+                </div>
                 <span className="learning-card__number">
                   {String(index + 1).padStart(2, "0")}
                 </span>
