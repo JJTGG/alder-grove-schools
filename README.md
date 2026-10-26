@@ -2,25 +2,24 @@
 
 **A standalone fictional school website concept built by TGG HUB.**
 
-Alder Grove Schools is a portfolio demonstration designed to showcase how a school website can present its educational approach, learning stages, school life, admissions information and editorial content through a clear, responsive multi-page experience.
+Alder Grove Schools is a portfolio demonstration showing how a school website can present its educational approach, learning stages, school life, admissions information and editorial content through a responsive multi-page experience.
 
-**Alder Grove Schools is fictional. It is not an operating school.** The content is illustrative and must not be interpreted as verified information about a real institution.
+**Alder Grove Schools is fictional. It is not an operating school.** All school information is illustrative and must not be interpreted as verified information about a real institution.
 
 ## Project Overview
 
-The website is designed to give prospective school communities a straightforward way to explore educational information and understand the next steps they might take.
-
-The experience focuses on:
+The website focuses on:
 
 - Clear navigation and page structure.
 - A restrained, education-focused visual identity.
 - Responsive layouts for mobile, tablet and desktop screens.
 - Dedicated pages for different learning stages.
 - Reusable components and centralised typed content.
-- Accessible navigation, visible focus states and reduced-motion support.
+- Accessibility-oriented navigation, visible keyboard focus and reduced-motion support.
+- Cloudinary-hosted photography with responsive image delivery.
 - Clear disclosure of fictional content and demonstration-only functionality.
 
-The project is a public-facing website demonstration, not a school management system.
+This is a public-facing website demonstration, not a school management system.
 
 ## Technology Stack
 
@@ -29,37 +28,49 @@ The project is a public-facing website demonstration, not a school management sy
 - **Language:** TypeScript
 - **Styling:** CSS
 - **Content:** Typed static data
-- **Deployment target:** Vercel
+- **Image storage and delivery:** Cloudinary
+- **Image rendering and optimization:** Next.js Image
+- **Deployment:** Vercel
+- **Continuous integration:** GitHub Actions
 
-The application is structured around Next.js pages, shared components and static content. No database, authentication service or external image service is required by the current implementation.
+The application uses static content. It does not require a database, authentication service, CMS or production contact-form backend.
+
+## Live Website and Repository
+
+- **Website:** https://alder-grove-schools.vercel.app
+- **Repository:** https://github.com/JJTGG/alder-grove-schools
+- **Deployment platform:** Vercel
+
+The project is connected to GitHub. Pushes to `main` trigger the configured validation workflow and Vercel deployment.
 
 ## Website Routes
 
 | Route | Purpose |
 |---|---|
-| `/` | Homepage introducing the concept and its learning stages |
+| `/` | Homepage introducing the concept and learning stages |
 | `/about` | Educational ideas and guiding principles |
-| `/learning` | Overview of the learning stages |
+| `/learning` | Learning-stage overview |
 | `/learning/early-years` | Early Years overview |
 | `/learning/primary` | Primary Learning overview |
 | `/learning/secondary` | Secondary Learning overview |
-| `/school-life` | Sample themes covering community, activities and student development |
+| `/school-life` | Illustrative themes covering activities, teamwork and development |
 | `/news` | News and insights index |
-| `/news/learning-beyond-the-classroom` | Sample article about learning beyond formal lessons |
+| `/news/learning-beyond-the-classroom` | Sample article about learning beyond lessons |
 | `/news/working-with-families` | Sample article about family partnerships |
-| `/news/helping-learners-discover-strengths` | Sample article about learner strengths and progress |
-| `/admissions` | Illustrative admissions journey, frequently asked questions and demo enquiry form |
-| `/contact` | Contact page concept and demo enquiry form |
-| `/privacy` | Explanation of the current demo's privacy and data-handling limitations |
+| `/news/helping-learners-discover-strengths` | Sample article about learner strengths |
+| `/admissions` | Illustrative admissions journey, FAQ and demonstration form |
+| `/contact` | Contact page concept and demonstration form |
+| `/privacy` | Explanation of the demo's privacy and data-handling limitations |
 
-The learning-stage and article detail pages use dynamic route segments with statically defined entries. Unsupported stages and article slugs return the branded not-found page.
+Learning-stage and news-detail routes use statically defined entries. Unsupported slugs return the branded not-found page.
 
 ## Project Structure
 
-The main application files are organised as follows:
-
 ```text
 alder-grove-schools/
+├── .github/
+│   └── workflows/
+│       └── ci.yml
 ├── app/
 │   ├── about/
 │   │   └── page.tsx
@@ -80,6 +91,7 @@ alder-grove-schools/
 │   ├── school-life/
 │   │   └── page.tsx
 │   ├── globals.css
+│   ├── image-sections.css
 │   ├── layout.tsx
 │   ├── not-found.tsx
 │   ├── page.tsx
@@ -102,174 +114,175 @@ alder-grove-schools/
 
 ### Requirements
 
-- Node.js `20.9.0` or later.
-- npm.
-- Git, if cloning the repository.
+- Node.js 22.x
+- npm
+- Git, if cloning the repository
 
 ### Installation
-
-Clone the repository and enter the project directory:
 
 ```bash
 git clone https://github.com/JJTGG/alder-grove-schools.git
 cd alder-grove-schools
-```
-
-Install the dependencies:
-
-```bash
 npm install
 ```
 
-### Start the Development Server
+### Development
 
 ```bash
 npm run dev
 ```
 
-Open `http://localhost:3000` in your browser.
+Open `http://localhost:3000`.
 
-### TypeScript Check
+### Validation
+
+TypeScript check:
 
 ```bash
 npm run typecheck
 ```
 
-This runs TypeScript without emitting compiled output.
-
-### Production Build
+Production build:
 
 ```bash
 npm run build
 ```
 
-The build script runs the TypeScript check before invoking the Next.js production build.
+The production build runs TypeScript validation before invoking the Next.js build.
 
-### Run the Production Build Locally
-
-After a successful production build:
+Run the production build locally:
 
 ```bash
 npm run start
 ```
 
-The production server is available at `http://localhost:3000`.
+## Image Pipeline
 
-## Design and Content Principles
+Photography is stored in the Cloudinary folder:
 
-### Fictional Content
+`alder-grove-schools`
 
-All school descriptions, educational principles, learning-stage details, articles and admissions guidance are illustrative.
+The current set covers:
 
-The project does not claim that Alder Grove Schools has real students, staff, facilities, school results, accreditation, operational policies or an established curriculum.
+- Campus exterior and greenery.
+- Early learning and paired reading.
+- Library reading.
+- Classroom science experiments.
+- Creative arts.
+- Outdoor sport.
+- Collaborative classroom learning.
 
-No real school address, telephone number, email address, fees, vacancies or admissions dates are invented for this demonstration.
+Images are referenced through Cloudinary delivery URLs with transformations for cropping, output format and quality. Next.js Image renders these sources responsively, using generated source sizes and lazy loading for non-critical images. The homepage hero is preloaded because it is the principal above-the-fold image.
 
-### Visual Design
+The `images.remotePatterns` setting in `next.config.ts` limits remote Next.js image handling to the project's Cloudinary hostname and path.
+
+### Image Attribution and Usage
+
+The photographs are illustrative stock imagery, not evidence of actual Alder Grove Schools students, staff, buildings, facilities or activities.
+
+Source and photographer details are retained in the Cloudinary asset context. Pexels' license permits free personal and commercial use without mandatory attribution, although credit is appreciated. Review Pexels' current license and consider any additional rights that may apply to depicted people, logos, trademarks or property before adapting imagery for another purpose.
+
+- Pexels license: https://www.pexels.com/license/
+- Cloudinary: https://cloudinary.com/
+
+## Design Principles
 
 The visual direction uses:
 
-- A restrained green, cream and neutral colour palette.
+- A restrained green, cream and neutral palette.
 - Clear typographic hierarchy.
 - Rounded but practical interface elements.
-- A responsive navigation system.
-- A CSS-built decorative campus illustration.
-- Reusable cards, page headers, callouts and content sections.
+- Responsive navigation and content layouts.
+- A photographic homepage hero and learning cards.
+- Reusable cards, page headers, callouts and sections.
 
-The current version does not depend on external photography or remote image URLs.
+Photography supports the site's content rather than replacing it. The concept remains intentionally free of invented school addresses, telephone numbers, email addresses, fees, vacancies, admissions dates, accreditation claims or institutional results.
 
-### Accessibility
+## Accessibility
 
-The implementation includes several accessibility-oriented features:
+The implementation includes:
 
 - A skip-to-content link.
 - Semantic page landmarks and headings.
 - Labels for form fields.
 - An accessible mobile-navigation toggle.
 - Visible keyboard focus indicators.
-- Appropriate status messaging for the demo form.
-- Reduced-motion styling for visitors who request reduced animation.
+- Status messaging for the demonstration form.
+- Reduced-motion styling.
+- Descriptive alternative text for informative images.
 
-These features do not constitute a complete accessibility audit. The website should be tested across target browsers, devices and assistive technologies before a real launch.
+These features do not constitute a complete accessibility audit. Test target browsers, devices and assistive technologies before adapting the concept for a real institution.
 
 ## Enquiry Form Limitations
 
-The admissions and contact pages contain a demonstration-only enquiry form.
+The admissions and contact pages contain a demonstration-only form.
 
-Submitting the form:
+Submitting the form prevents normal submission, resets the fields and displays a local confirmation message. It does not contact an API, email address or external service, and it does not intentionally save submissions to a database.
 
-1. Prevents the browser's normal form submission.
-2. Resets the displayed form fields.
-3. Shows a local confirmation message.
+The fields have no `name` attributes, so a native form fallback cannot serialize their values into a query string. The interface also warns visitors not to enter real personal or contact information.
 
-The form does **not** send information to an API, email address or external service. It does not write submissions to a database or intentionally persist the entered values.
-
-The interface warns visitors not to enter real personal or contact information.
-
-A production implementation would require an approved submission workflow, server-side validation, suitable spam protection, secure handling of submitted information and an appropriate privacy notice.
+A production implementation would require an approved submission workflow, server-side validation, spam protection, appropriate privacy disclosures and secure handling of submitted information.
 
 ## Privacy and Search Indexing
 
 The current application does not implement:
 
 - User accounts or authentication.
-- A database.
-- Analytics configured by this application.
-- A content management system.
+- A database or CMS.
+- Application-configured analytics.
 - A working contact or admissions submission backend.
 - Student, parent or staff records.
+- Payment processing or application-status tracking.
 
-The page metadata discourages search engines from indexing the fictional demo. The robots configuration allows crawlers to access pages so they can discover the `noindex` instruction.
+The metadata deliberately sets `noindex` and `nofollow`, while `robots.ts` allows crawlers to access pages and discover the indexing directive. This is intended for a fictional portfolio demo, not a guarantee that URLs can never appear in search results.
 
-This configuration is intended for the demonstration stage. Search engines may take time to process indexing directives, and the configuration alone does not guarantee that URLs will never appear in search results.
+Hosting platforms, infrastructure, browser extensions and other external services may process data independently of the application's form logic. Review those systems separately before a production launch.
 
-Hosting platforms, deployment infrastructure, browser extensions and other external services may process data independently of this application's form logic. Those systems must be reviewed separately before a production deployment.
-
-The privacy page is project documentation, not legal advice or a claim of compliance with any specific law.
+The privacy page is project documentation, not legal advice or a claim of compliance with any particular law.
 
 ## Scope Boundaries
 
-The current project is intentionally limited to a public-facing school website.
+This project is intentionally limited to a public-facing school website. It does not include:
 
-It does not include:
-
-- School management or administration dashboards.
+- School management dashboards.
 - Student or staff portals.
 - Attendance tracking or grading.
 - Online fee payment.
-- Admissions applications or application-status tracking.
-- Live school availability, calendars or events.
-- A database-backed content management system.
+- Actual admissions applications or application-status tracking.
+- Live school calendars or event data.
+- Database-backed content management.
 - A production contact-form backend.
 - Live chat or messaging integrations.
 
-Those capabilities would require separate requirements, design decisions and implementation work. They are not implied by the current website.
+These capabilities require separate requirements and implementation.
+
+## Continuous Integration
+
+GitHub Actions runs the TypeScript check and production build on pushes to `main` and pull requests targeting `main`.
+
+The workflow currently uses Node.js 22 and runs `npm install` before the build. Lockfile generation and automation are intentionally deferred until the project setup is complete.
+
+A successful CI run establishes that the code type-checks and builds. It does not replace live browser testing or an accessibility audit.
 
 ## Before Production Use
 
-Before adapting this demonstration for a real school, the responsible institution would need to:
+Before adapting the demonstration for a real school:
 
-1. Supply and approve its actual institutional information.
-2. Confirm the curriculum, learning-stage descriptions and admissions procedures.
-3. Provide verified contact details, office hours and relevant fees or dates.
-4. Supply properly licensed photography and other media, where required.
-5. Approve its privacy, safeguarding, accessibility and legal information.
-6. Implement and test any required form submission, data storage or third-party integration.
+1. Supply and approve the institution's actual information.
+2. Verify curriculum, learning-stage details and admissions procedures.
+3. Provide verified contact details, office hours, fees and dates.
+4. Confirm image usage rights, attribution and permissions where needed.
+5. Approve privacy, safeguarding, accessibility and legal information.
+6. Implement and test any form submission, data storage or third-party integration.
 7. Test responsive behaviour, navigation, broken routes, metadata and production builds.
-8. Review the completed website with the school's authorised representatives.
+8. Review the final website with the institution's authorised representatives.
 
-Do not present this fictional concept as an existing institution or publish its sample content as verified school information.
-
-## Project Status
-
-The repository is the source of truth for implementation.
-
-The existence of a file in this README's structure does not replace checking the actual repository, running its validation scripts or verifying the deployed website. A successful build and working deployment should only be claimed after those checks have actually been completed.
+Do not present this fictional concept as an existing school or sample content as verified institutional information.
 
 ## Creator
 
 **TGG HUB**
 
-A standalone website portfolio demonstration.
+A standalone school website portfolio demonstration.
 
 Repository: https://github.com/JJTGG/alder-grove-schools
