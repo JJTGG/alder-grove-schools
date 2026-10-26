@@ -44,7 +44,6 @@ export default function SchoolLifePage() {
                     fill
                     sizes="(max-width: 600px) 100vw, (max-width: 860px) 50vw, 45vw"
                     src={topic.imageUrl}
-                    unoptimized
                   />
                 </div>
                 <div className="life-card__body">
