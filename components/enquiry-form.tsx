@@ -29,13 +29,14 @@ export default function EnquiryForm() {
         fictional demo.
       </div>
 
+      {/* No name attributes: this demo has no backend, and native form
+          submission must not serialize entered values into the URL. */}
       <form className="enquiry-form" onSubmit={handleSubmit}>
         <div className="form-field">
           <label htmlFor="enquiry-name">Parent or guardian name</label>
           <input
             autoComplete="off"
             id="enquiry-name"
-            name="name"
             placeholder="Your name"
             required
           />
@@ -43,12 +44,7 @@ export default function EnquiryForm() {
 
         <div className="form-field">
           <label htmlFor="enquiry-stage">Area of interest</label>
-          <select
-            defaultValue=""
-            id="enquiry-stage"
-            name="stage"
-            required
-          >
+          <select defaultValue="" id="enquiry-stage" required>
             <option disabled value="">
               Choose a learning stage
             </option>
@@ -64,7 +60,6 @@ export default function EnquiryForm() {
           <input
             autoComplete="off"
             id="enquiry-email"
-            name="email"
             placeholder="name@example.com"
             type="email"
           />
@@ -74,7 +69,6 @@ export default function EnquiryForm() {
           <label htmlFor="enquiry-message">What would you like to ask?</label>
           <textarea
             id="enquiry-message"
-            name="message"
             placeholder="Write a sample enquiry..."
             required
             rows={4}
