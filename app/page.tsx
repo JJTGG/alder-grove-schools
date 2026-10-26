@@ -42,10 +42,9 @@ export default function HomePage() {
                 alt="Illustrative photograph of a school building surrounded by landscaped greenery."
                 className="home-hero__photo-image"
                 fill
-                priority
+                preload
                 sizes="(max-width: 860px) 100vw, 50vw"
                 src={campusImage}
-                unoptimized
               />
               <div className="home-hero__photo-label">
                 <div>
@@ -92,7 +91,6 @@ export default function HomePage() {
                     fill
                     sizes="(max-width: 600px) 100vw, (max-width: 860px) 50vw, 33vw"
                     src={stage.imageUrl}
-                    unoptimized
                   />
                 </div>
                 <span className="learning-card__number">
